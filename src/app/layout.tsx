@@ -87,6 +87,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         style={{ minHeight: 'calc(var(--vh, 1vh) * 100)' }}
       >
         {children}
+        <footer className="mt-2 py-6 text-center text-xs text-gray-500 dark:text-gray-400">
+          Designed &amp; built by{" "}
+          <a
+            href="https://faysk.top"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold hover:underline hover:text-gold/80 transition-colors duration-200"
+          >
+            Faysk
+          </a>
+        </footer>
       </body>
     </html>
   )
