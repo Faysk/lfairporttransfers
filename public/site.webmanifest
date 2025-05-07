@@ -1,0 +1,16 @@
+{
+    "name": "LF Airport Transfers",
+    "short_name": "LF Transfers",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "icons": [
+      {
+        "src": "/3003984.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  
