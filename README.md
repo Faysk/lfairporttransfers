@@ -34,3 +34,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Resetting the project
+
+To remove the default Next.js files and start with a clean structure you can run:
+
+```bash
+./Reset-Project.sh
+```
+
+On Windows, use PowerShell:
+
+```powershell
+./Reset-Projeto.ps1
+```
+
+The script cleans the `src/app` files and the `public` directory, then recreates empty `layout.tsx`, `page.tsx` and `src/styles/globals.css`.
