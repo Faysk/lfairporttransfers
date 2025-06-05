@@ -1,37 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LF Airport Transfers
 
-## Getting Started
+Landing page em construção para o serviço de chauffeur de luxo em Londres. Desenvolvido em [Next.js](https://nextjs.org/) com [Tailwind CSS](https://tailwindcss.com/).
 
-First, run the development server:
+## Objetivo
+
+Divulgar o serviço de transfers executivos da LF Airport Transfers enquanto o site completo não fica pronto.
+
+## Requisitos
+
+- Node.js 18 ou superior
+- npm 9 ou superior
+
+## Instalação
+
+Clone o repositório e instale as dependências:
+
+```bash
+npm install
+```
+
+## Como rodar
+
+Inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse `http://localhost:3000` no navegador para visualizar a página.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para criar uma build de produção e iniciar o servidor:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Mais informações
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Consulte [docs/setup.md](docs/setup.md) para detalhes de configuração (Tailwind, PostCSS etc.).
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
@@ -50,3 +58,7 @@ On Windows, use PowerShell:
 ```
 
 The script cleans the `src/app` files and the `public` directory, then recreates empty `layout.tsx`, `page.tsx` and `src/styles/globals.css`.
+=======
+## License
+
+This project is licensed under the [MIT License](LICENSE).
