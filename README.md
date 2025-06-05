@@ -38,4 +38,11 @@ npm start
 
 ## Mais informações
 
+
 Consulte [docs/setup.md](docs/setup.md) para detalhes de configuração (Tailwind, PostCSS etc.).
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
