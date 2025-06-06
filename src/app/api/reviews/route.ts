@@ -18,6 +18,7 @@ export async function GET() {
 
     return NextResponse.json(reviews.slice(0, 5)); // Limita a 5 reviews
   } catch (error) {
+    console.error('Google Reviews API error:', error);
     return NextResponse.json({ error: 'Failed to fetch reviews' }, { status: 500 });
   }
 }

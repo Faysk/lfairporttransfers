@@ -9,8 +9,16 @@ import 'swiper/css/pagination';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
+type GoogleReview = {
+  author_name: string;
+  profile_photo_url: string;
+  rating: number;
+  text: string;
+  relative_time_description: string;
+};
+
 export default function HomePage() {
-  const { data: reviews, isLoading, error } = useSWR('/api/reviews', fetcher);
+  const { data: reviews, isLoading, error } = useSWR<GoogleReview[]>('/api/reviews', fetcher);
 
   return (
     <main className="reviews-page">
@@ -34,7 +42,7 @@ export default function HomePage() {
           pagination={{ clickable: true }}
           className="reviews-swiper"
         >
-          {reviews.map((review: any, index: number) => (
+          {reviews.map((review: GoogleReview, index: number) => (
             <SwiperSlide key={index}>
               <div className="review-card">
                 <Image

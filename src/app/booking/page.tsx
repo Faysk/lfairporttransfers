@@ -60,7 +60,7 @@ export default function BookingPage() {
       <div className="booking-container">
         <h1 className="booking-title">Book Your Ride</h1>
         <p className="booking-subtitle">
-          Fill in the form below and we'll confirm your luxury transfer shortly.
+          Fill in the form below and we&apos;ll confirm your luxury transfer shortly.
         </p>
 
         <form onSubmit={handleSubmit} className="booking-form">

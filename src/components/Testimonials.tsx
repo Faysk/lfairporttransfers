@@ -15,6 +15,14 @@ type Testimonial = {
   relative_time_description: string;
 };
 
+type GoogleReview = {
+  author_name: string;
+  profile_photo_url: string;
+  text: string;
+  rating: number;
+  relative_time_description: string;
+};
+
 const fallbackTestimonials: Testimonial[] = [
   {
     name: 'John A.',
@@ -42,10 +50,10 @@ const fallbackTestimonials: Testimonial[] = [
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
 export default function Testimonials() {
-  const { data: reviews, error } = useSWR('/api/reviews', fetcher);
+  const { data: reviews, error } = useSWR<GoogleReview[]>('/api/reviews', fetcher);
 
   const testimonials: Testimonial[] = !error && reviews?.length
-    ? reviews.map((r: any) => ({
+    ? reviews.map((r: GoogleReview) => ({
         name: r.author_name,
         image: r.profile_photo_url || '/images/testimonials/default.jpg',
         text: r.text,
@@ -95,7 +103,9 @@ export default function Testimonials() {
                 loading="lazy"
                 decoding="async"
                 className="testimonial-avatar"
-                onError={(e: any) => (e.currentTarget.src = '/images/testimonials/default.jpg')}
+                onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                  e.currentTarget.src = '/images/testimonials/default.jpg';
+                }}
               />
 
               <figcaption className="testimonial-stars" aria-hidden="true">
