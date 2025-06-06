@@ -1,36 +1,140 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ✈️ LF Airport Transfers
 
-## Getting Started
+A premium executive transport service in London, focused on luxury, punctuality, and smooth booking experiences for international and corporate clients.
 
-First, run the development server:
+Live at: [https://lfairporttransfers.co.uk](https://lfairporttransfers.co.uk)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🖥️ Project Overview
+
+This is a modern, responsive website for **LF Airport Transfers**, a high-end private chauffeur and airport transfer service based in London. Built with **Next.js 15**, **Tailwind CSS 4.1**, and deployed via **Vercel**, the site features elegant animations, luxury branding, and seamless user experience across devices.
+
+---
+
+## 🚀 Tech Stack
+
+| Layer          | Technology                             |
+|----------------|-----------------------------------------|
+| Framework      | [Next.js 15](https://nextjs.org)        |
+| Styling        | [Tailwind CSS v4.1](https://tailwindcss.com) |
+| Language       | TypeScript                              |
+| Animations     | Framer Motion                           |
+| Hosting        | [Vercel](https://vercel.com)            |
+| SEO            | Next.js Metadata API + Structured Data  |
+
+---
+
+## 📁 Project Structure
+
+```
+lfairporttransfers/
+├── public/                  # Static assets (images, icons, etc.)
+├── src/
+│   ├── app/                 # Next.js app directory (routing/pages)
+│   │   ├── layout.tsx       # Global layout (font, theme, metadata)
+│   │   └── page.tsx         # Homepage (landing sections)
+│   ├── components/         # Reusable UI components (Navbar, Hero, Fleet, etc.)
+│   ├── styles/             # Tailwind and global CSS
+│   └── utils/              # Helper functions
+├── tailwind.config.ts      # Tailwind configuration
+├── postcss.config.mjs      # PostCSS config with Tailwind plugin
+├── tsconfig.json           # TypeScript config
+└── README.md               # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Clone the Repository
 
-## Learn More
+```bash
+git clone https://github.com/seu-usuario/lfairporttransfers.git
+cd lfairporttransfers
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Install Dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+> Requires Node.js 18+ and npm 9+  
+> Optional: `pnpm` or `yarn` supported
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 Development Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command               | Description                      |
+|-----------------------|----------------------------------|
+| `npm run dev`         | Launch dev server (`localhost:3000`) |
+| `npm run build`       | Create production build          |
+| `npm run start`       | Start production server          |
+| `npm run lint`        | Run ESLint for code quality      |
+
+---
+
+## 🌍 SEO & Optimization
+
+- Open Graph Meta Tags for social media sharing
+- Optimized `next/image` usage for performance
+- Lazy loading and smooth scroll interactions
+- Schema.org structured data for business and services
+- Local SEO for London-based keywords
+
+---
+
+## 💼 Business Features
+
+- ✨ Hero with animated luxury branding
+- 🚘 Fleet showcase with specs and images
+- 📱 WhatsApp-integrated booking form
+- 🌐 Multilingual-ready (future-proof)
+- 🌟 Google reviews integration
+- 🧭 Sticky navigation + scrollspy
+- 🌑 Dark mode ready
+
+---
+
+## 🔒 Environment Variables
+
+Create a `.env.local` file:
+
+```env
+NEXT_PUBLIC_WHATSAPP_NUMBER=447541494500
+NEXT_PUBLIC_SITE_URL=https://lfairporttransfers.co.uk
+```
+
+> No server-side secrets are required. All data is handled client-side or via third-party integrations (e.g., WhatsApp).
+
+---
+
+## 🖼️ Image Optimization
+
+Use [TinyPNG](https://tinypng.com/) or [Squoosh](https://squoosh.app) for compressing visuals before placing them into `/public`.
+
+---
+
+## 📡 Deployment
+
+Deployed via **Vercel**. Push to `main` and it auto-deploys:
+
+```bash
+git add .
+git commit -m "🚀 Launch: LF Airport Transfers website"
+git push origin main
+```
+
+---
+
+## 👨‍🎨 Credits
+
+Design & Development by [Faysk](https://faysk.top)
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](./LICENSE).
