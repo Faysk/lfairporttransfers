@@ -59,6 +59,10 @@ ${form.message || 'No extra notes yet.'}
               <Mail aria-hidden="true" />
               <span>{business.email}</span>
             </a>
+            <a href={`mailto:${business.bookingsEmail}`}>
+              <Mail aria-hidden="true" />
+              <span>{business.bookingsEmail}</span>
+            </a>
             <span>
               <Clock3 aria-hidden="true" />
               24/7 airport transfer enquiries

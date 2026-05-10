@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Instagram, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { Building2, Linkedin, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import { buildWhatsAppUrl, business, defaultBookingMessage } from '@/lib/contact';
 
 const footerRoutes = [
@@ -24,6 +24,8 @@ export default function Footer() {
             Premium private chauffeur and airport transfer service in London, built around
             punctuality, discretion and a refined Mercedes fleet.
           </p>
+          <span className="footer-meta">Company No. {business.companyNumber}</span>
+          <span className="footer-meta">Established {business.founded}</span>
         </div>
 
         <div className="footer-column">
@@ -61,6 +63,10 @@ export default function Footer() {
             <Mail aria-hidden="true" />
             {business.email}
           </a>
+          <a href={`mailto:${business.bookingsEmail}`} className="footer-contact">
+            <Building2 aria-hidden="true" />
+            {business.bookingsEmail}
+          </a>
           <a
             href={buildWhatsAppUrl(defaultBookingMessage)}
             className="footer-contact"
@@ -71,13 +77,13 @@ export default function Footer() {
             WhatsApp
           </a>
           <a
-            href={business.instagram}
+            href={business.linkedin}
             className="footer-contact"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Instagram aria-hidden="true" />
-            Instagram
+            <Linkedin aria-hidden="true" />
+            LinkedIn
           </a>
           <span className="footer-contact muted">
             <MapPin aria-hidden="true" />

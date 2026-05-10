@@ -91,6 +91,13 @@ const structuredData = {
   url: siteUrl,
   email: business.email,
   telephone: business.phoneDisplay,
+  foundingDate: '2022-10',
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'UK Company Number',
+    value: business.companyNumber,
+  },
+  sameAs: [business.linkedin],
   image: `${siteUrl}/opengraph-image`,
   priceRange: '£££',
   areaServed: [

@@ -1,9 +1,16 @@
 export const business = {
   name: 'LF Airport Transfers',
-  phoneDisplay: '+44 7541 494500',
-  whatsappNumber: '447541494500',
-  email: 'info@lfairporttransfers.co.uk',
-  instagram: 'https://instagram.com/lfairporttransfers',
+  phoneDisplay: '+44 7543 354410',
+  whatsappNumber: '447543354410',
+  email: 'contact@lfairporttransfers.co.uk',
+  bookingsEmail: 'bookings@lfairporttransfers.co.uk',
+  supportEmail: 'support@lfairporttransfers.co.uk',
+  adminEmail: 'admin@lfairporttransfers.co.uk',
+  infoEmail: 'info@lfairporttransfers.co.uk',
+  companyNumber: '07543354410',
+  founded: 'October 2022',
+  linkedin: 'https://www.linkedin.com/company/lfairporttransfers/',
+  instagram: '',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://lfairporttransfers.co.uk',
 };
 
@@ -13,4 +20,3 @@ export function buildWhatsAppUrl(message: string) {
 
 export const defaultBookingMessage =
   "Hello, I'd like to request a private chauffeur transfer with LF Airport Transfers.";
-
