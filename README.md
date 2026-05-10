@@ -131,7 +131,7 @@ git push origin main
 
 ## 👨‍🎨 Credits
 
-Design & Development by [Faysk](https://faysk.top)
+Design & Development by [Faysk](https://faysk.dev)
 
 ---
 

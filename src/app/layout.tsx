@@ -1,91 +1,127 @@
-import "@/styles/globals.css";
-import { Inter } from "next/font/google";
-import type { Metadata } from "next";
-import Footer from "../components/Footer";
+import '@/styles/globals.css';
+import { DM_Sans, Playfair_Display } from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
+import Footer from '../components/Footer';
+import { business } from '@/lib/contact';
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
+const bodyFont = DM_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
 });
 
+const displayFont = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+  weight: ['600', '700'],
+});
+
+const siteUrl = business.siteUrl;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lfairporttransfers.co.uk"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "LF Airport Transfers | Executive Chauffeur Service in London",
-    template: "%s | LF Airport Transfers",
+    default: 'LF Airport Transfers | Private Chauffeur & Airport Transfers London',
+    template: '%s | LF Airport Transfers',
   },
   description:
-    "Premium chauffeur and airport transfer service in London. Ride in luxury, arrive in style. Book Mercedes EQS, V-Class or E-Class 24/7.",
+    'Premium private chauffeur and airport transfer service in London. Book Mercedes EQS, E-Class and V-Class transfers for Heathrow, Gatwick, London City, Luton and Stansted.',
   keywords: [
-    "airport transfers",
-    "London chauffeur",
-    "executive chauffeur",
-    "Mercedes EQS hire",
-    "luxury transport UK",
-    "V-Class airport taxi",
-    "private driver London",
-    "chauffeur to Heathrow",
-    "chauffeur to Gatwick",
+    'London chauffeur service',
+    'private chauffeur London',
+    'airport transfers London',
+    'Heathrow chauffeur',
+    'Gatwick chauffeur transfer',
+    'London City Airport transfer',
+    'Mercedes chauffeur London',
+    'executive airport transfer London',
+    'V-Class airport transfer',
+    'private driver London',
   ],
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+  applicationName: 'LF Airport Transfers',
+  alternates: {
+    canonical: '/',
   },
   openGraph: {
-    type: "website",
-    locale: "en_GB",
-    url: "https://lfairporttransfers.co.uk",
-    title: "LF Airport Transfers | Executive Chauffeur Service in London",
-    description: "Book your luxury Mercedes with professional chauffeurs in London.",
+    type: 'website',
+    locale: 'en_GB',
+    url: siteUrl,
+    siteName: 'LF Airport Transfers',
+    title: 'LF Airport Transfers | Private Chauffeur & Airport Transfers London',
+    description:
+      'Luxury Mercedes chauffeur transfers across London airports, hotels and private addresses.',
     images: [
       {
-        url: "/og-image.jpg",
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: "LF Airport Transfers - Luxury Chauffeur",
+        alt: 'LF Airport Transfers private chauffeur service in London',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    site: "@lf_transfers",
-    creator: "@lf_transfers",
-    title: "LF Airport Transfers",
-    description: "Executive Chauffeur Service in London",
-    images: ["/og-image.jpg"],
+    card: 'summary_large_image',
+    title: 'LF Airport Transfers',
+    description: 'Private chauffeur and airport transfer service in London.',
+    images: ['/opengraph-image'],
+  },
+  icons: {
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    apple: [{ url: '/apple-icon', sizes: '180x180', type: 'image/png' }],
+  },
+  manifest: '/site.webmanifest',
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#070706',
+  colorScheme: 'dark',
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'LF Airport Transfers',
+  url: siteUrl,
+  email: business.email,
+  telephone: business.phoneDisplay,
+  image: `${siteUrl}/opengraph-image`,
+  priceRange: '£££',
+  areaServed: [
+    'London',
+    'Heathrow Airport',
+    'Gatwick Airport',
+    'London City Airport',
+    'Luton Airport',
+    'Stansted Airport',
+  ],
+  serviceType: [
+    'Private chauffeur service',
+    'Airport transfers',
+    'Corporate chauffeur',
+    'Hourly chauffeur hire',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'London',
+    addressCountry: 'GB',
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-GB" className="scroll-smooth">
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="icon" href="/favicon.ico" />
+    <html lang="en-GB" className={`${bodyFont.variable} ${displayFont.variable} scroll-smooth`}>
+      <body>
         <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function () {
-                const setVh = () => {
-                  const vh = window.innerHeight * 0.01;
-                  document.documentElement.style.setProperty('--vh', \`\${vh}px\`);
-                };
-                window.addEventListener('resize', setVh);
-                setVh();
-              })();
-            `,
-          }}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-      </head>
-      <body
-        className={`${inter.variable} font-sans antialiased bg-black text-white`}
-        style={{ minHeight: "calc(var(--vh, 1vh) * 100)" }}
-      >
         {children}
         <Footer />
       </body>

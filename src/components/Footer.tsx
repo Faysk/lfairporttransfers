@@ -1,51 +1,95 @@
 import Link from 'next/link';
-import { FaInstagram, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
+import { Instagram, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { buildWhatsAppUrl, business, defaultBookingMessage } from '@/lib/contact';
+
+const footerRoutes = [
+  'Heathrow transfers',
+  'Gatwick transfers',
+  'London City transfers',
+  'Luton transfers',
+  'Stansted transfers',
+  'Hourly chauffeur hire',
+];
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-grid">
-        {/* ℹ️ Identidade */}
-        <div className="footer-column">
-          <h3 className="footer-title">LF Airport Transfers</h3>
-          <p className="footer-description">
-            Premium chauffeur services in London. Travel in comfort and arrive in style — 24/7 availability with a luxury fleet.
+        <div className="footer-column footer-brand">
+          <Link href="/#home" className="footer-logo">
+            <span>LF</span>
+            Airport Transfers
+          </Link>
+          <p>
+            Premium private chauffeur and airport transfer service in London, built around
+            punctuality, discretion and a refined Mercedes fleet.
           </p>
         </div>
 
-        {/* 🧭 Links rápidos */}
         <div className="footer-column">
-          <h4 className="footer-subtitle">Quick Links</h4>
-          <Link href="/" className="footer-link">Home</Link>
-          <Link href="/booking" className="footer-link">Booking</Link>
-          <a href="https://wa.me/447541494500" target="_blank" className="footer-link">WhatsApp</a>
+          <h3>Services</h3>
+          {footerRoutes.map((route) => (
+            <Link key={route} href="/#routes" className="footer-link">
+              {route}
+            </Link>
+          ))}
         </div>
 
-        {/* 📞 Contato */}
         <div className="footer-column">
-          <h4 className="footer-subtitle">Contact</h4>
+          <h3>Company</h3>
+          <Link href="/#fleet" className="footer-link">
+            Fleet
+          </Link>
+          <Link href="/#services" className="footer-link">
+            Chauffeur services
+          </Link>
+          <Link href="/booking" className="footer-link">
+            Booking request
+          </Link>
+          <Link href="/#faq" className="footer-link">
+            FAQ
+          </Link>
+        </div>
 
-          <a href="mailto:info@lfairporttransfers.co.uk" className="footer-contact">
-            <FaEnvelope className="footer-icon gold" />
-            info@lfairporttransfers.co.uk
+        <div className="footer-column">
+          <h3>Contact</h3>
+          <a href={`tel:${business.phoneDisplay.replace(/\s/g, '')}`} className="footer-contact">
+            <Phone aria-hidden="true" />
+            {business.phoneDisplay}
           </a>
-
-          <a href="https://wa.me/447541494500" className="footer-contact" target="_blank" rel="noopener noreferrer">
-            <FaWhatsapp className="footer-icon green" />
-            +44 7541 494500
+          <a href={`mailto:${business.email}`} className="footer-contact">
+            <Mail aria-hidden="true" />
+            {business.email}
           </a>
-
-          <a href="https://instagram.com/lfairporttransfers" className="footer-contact" target="_blank" rel="noopener noreferrer">
-            <FaInstagram className="footer-icon pink" />
+          <a
+            href={buildWhatsAppUrl(defaultBookingMessage)}
+            className="footer-contact"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <MessageCircle aria-hidden="true" />
+            WhatsApp
+          </a>
+          <a
+            href={business.instagram}
+            className="footer-contact"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Instagram aria-hidden="true" />
             Instagram
           </a>
+          <span className="footer-contact muted">
+            <MapPin aria-hidden="true" />
+            London, United Kingdom
+          </span>
         </div>
       </div>
 
       <div className="footer-bottom">
-        © {new Date().getFullYear()} LF Airport Transfers. Crafted by{' '}
-        <a href="https://faysk.top" className="footer-credit" target="_blank" rel="noopener noreferrer">
-          Faysk
+        <span>© {new Date().getFullYear()} LF Airport Transfers. All rights reserved.</span>
+        <a href="https://faysk.dev" target="_blank" rel="noopener noreferrer">
+          Crafted by Faysk
         </a>
       </div>
     </footer>

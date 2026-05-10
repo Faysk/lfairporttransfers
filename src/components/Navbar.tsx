@@ -1,30 +1,43 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { Menu, MessageCircle, Phone, X } from 'lucide-react';
+import { buildWhatsAppUrl, business, defaultBookingMessage } from '@/lib/contact';
 
 const navItems = [
   { name: 'Home', href: '#home' },
   { name: 'Fleet', href: '#fleet' },
   { name: 'Services', href: '#services' },
-  { name: 'Testimonials', href: '#testimonials' },
+  { name: 'Routes', href: '#routes' },
+  { name: 'Reviews', href: '#reviews' },
+  { name: 'FAQ', href: '#faq' },
   { name: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false);
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, []);
+
   return (
     <header className="navbar">
       <div className="navbar-container">
         <Link href="#home" className="navbar-logo">
-          LF Airport Transfers
+          <span className="navbar-mark">LF</span>
+          <span>
+            LF Airport <em>Transfers</em>
+          </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="navbar-desktop">
+        <nav className="navbar-desktop" aria-label="Primary navigation">
           {navItems.map((item) => (
             <Link key={item.name} href={item.href} className="navbar-link">
               <span className="navbar-text">{item.name}</span>
@@ -33,61 +46,60 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Mobile Toggle */}
+        <div className="navbar-actions">
+          <a className="navbar-phone" href={`tel:${business.phoneDisplay.replace(/\s/g, '')}`}>
+            <Phone aria-hidden="true" />
+            {business.phoneDisplay}
+          </a>
+
+          <a
+            className="navbar-whatsapp"
+            href={buildWhatsAppUrl(defaultBookingMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open WhatsApp chat"
+          >
+            <MessageCircle aria-hidden="true" />
+            WhatsApp
+          </a>
+        </div>
+
         <button
           onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-controls="mobile-navigation"
+          aria-expanded={open}
           className="navbar-toggle"
         >
-          <AnimatePresence mode="wait" initial={false}>
-            {open ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <X size={24} />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="menu"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Menu size={24} />
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {open ? <X aria-hidden="true" size={24} /> : <Menu aria-hidden="true" size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.nav
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="navbar-mobile"
+      {open && (
+        <nav id="mobile-navigation" className="navbar-mobile" aria-label="Mobile navigation">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="navbar-mobile-link"
+            >
+              {item.name}
+            </Link>
+          ))}
+
+          <a
+            className="navbar-mobile-cta"
+            href={buildWhatsAppUrl(defaultBookingMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
           >
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="navbar-mobile-link"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </motion.nav>
-        )}
-      </AnimatePresence>
+            <MessageCircle aria-hidden="true" />
+            Book via WhatsApp
+          </a>
+        </nav>
+      )}
     </header>
   );
 }

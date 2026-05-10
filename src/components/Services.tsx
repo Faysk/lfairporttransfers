@@ -1,56 +1,84 @@
-'use client';
-
-import { FaPlaneDeparture, FaBriefcase, FaClock } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import {
+  Baby,
+  BriefcaseBusiness,
+  CalendarDays,
+  Clock3,
+  Landmark,
+  MapPinned,
+  PlaneTakeoff,
+} from 'lucide-react';
 
 const services = [
   {
     title: 'Airport Transfers',
-    icon: <FaPlaneDeparture className="service-icon" />,
+    icon: PlaneTakeoff,
     description:
-      'Transfers to and from all major London airports — Heathrow, Gatwick, Luton and Stansted included.',
+      'Private pickups and drop-offs for Heathrow, Gatwick, London City, Luton and Stansted.',
   },
   {
     title: 'Corporate Chauffeur',
-    icon: <FaBriefcase className="service-icon" />,
+    icon: BriefcaseBusiness,
     description:
-      'Executive travel solutions for professionals and VIPs — always discreet, always on time.',
+      'Discreet executive travel for meetings, roadshows, hospitality teams and VIP guests.',
   },
   {
     title: 'Hourly Hire',
-    icon: <FaClock className="service-icon" />,
+    icon: Clock3,
     description:
-      'Book a chauffeur by the hour — perfect for events, meetings or city tours in full comfort.',
+      'Keep a chauffeur on standby for meetings, shopping, events or multi-stop London days.',
+  },
+  {
+    title: 'Event Transfers',
+    icon: CalendarDays,
+    description:
+      'Polished arrivals for weddings, private dinners, sporting events and red-carpet occasions.',
+  },
+  {
+    title: 'Family Travel',
+    icon: Baby,
+    description:
+      'Spacious options for luggage, child-seat requests and relaxed airport journeys with family.',
+  },
+  {
+    title: 'City & Long Distance',
+    icon: MapPinned,
+    description:
+      'Comfortable private travel across London and longer UK journeys by arrangement.',
   },
 ];
 
 export default function Services() {
   return (
-    <section className="services-section">
-      <div className="services-header">
-        <h2 className="services-title">Our Services</h2>
-        <p className="services-subtitle">
-          Luxury transport tailored for your needs — blending comfort, elegance and punctuality.
-        </p>
-      </div>
+    <section id="services" className="services-section">
+      <div className="section-shell">
+        <div className="section-intro split">
+          <div>
+            <p className="eyebrow">Chauffeur services</p>
+            <h2>Private transport shaped around the moment.</h2>
+          </div>
+          <p>
+            From a single airport arrival to a full day of appointments, LF Airport Transfers
+            keeps the booking personal, precise and easy to coordinate.
+          </p>
+        </div>
 
-      <div className="services-grid">
-        {services.map((service, index) => (
-          <motion.div
-            key={service.title}
-            className="service-card"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="service-header">
-              {service.icon}
+        <div className="services-grid">
+          {services.map((service) => (
+            <article key={service.title} className="service-card">
+              <service.icon aria-hidden="true" className="service-icon" />
               <h3 className="service-name">{service.title}</h3>
-            </div>
-            <p className="service-description">{service.description}</p>
-          </motion.div>
-        ))}
+              <p className="service-description">{service.description}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="service-highlight">
+          <Landmark aria-hidden="true" />
+          <p>
+            Serving Central London, Canary Wharf, Mayfair, Kensington, Chelsea, Westminster and
+            private addresses across Greater London.
+          </p>
+        </div>
       </div>
     </section>
   );
