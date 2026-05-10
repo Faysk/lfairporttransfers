@@ -9,9 +9,10 @@ const vehicles = [
     badge: 'Electric executive saloon',
     description: 'Ultra-quiet luxury for VIP airport transfers, corporate arrivals and premium city travel.',
     seats: 3,
-    luggage: 2,
+    luggage: '2-3 bags',
+    officialSpec: 'Official specification: 5 seats and 610-litre boot capacity.',
     ideal: 'Executives, VIPs, solo travellers',
-    features: ['Silent cabin', 'Premium rear seating', 'Elegant city presence'],
+    features: ['Best for 1-3 passengers with luggage', 'Silent electric cabin', 'Premium rear seating'],
   },
   {
     name: 'Mercedes E-Class',
@@ -19,19 +20,21 @@ const vehicles = [
     badge: 'Business class comfort',
     description: 'Refined, reliable and efficient for airport transfers, meetings and daily chauffeur hire.',
     seats: 3,
-    luggage: 2,
+    luggage: '2 bags',
+    officialSpec: 'Official specification: 5 seats and 540-litre boot capacity.',
     ideal: 'Business trips, airport runs',
-    features: ['Comfortable ride', 'Professional image', 'Ideal for meetings'],
+    features: ['Best for 1-3 passengers with luggage', 'Comfortable business-class ride', 'Ideal for meetings'],
   },
   {
     name: 'Mercedes V-Class',
-    image: '/images/hero/mercedes-vclass-driving.png',
+    image: '/images/fleet/mercedes-vclass-driving.png',
     badge: 'Luxury people carrier',
     description: 'Spacious private travel for families, group arrivals, events and extra luggage requirements.',
-    seats: 6,
-    luggage: 6,
+    seats: 7,
+    luggage: '6 bags',
+    officialSpec: 'Official specification: up to 8 occupants, including the chauffeur.',
     ideal: 'Families, groups, events',
-    features: ['Flexible seating', 'Generous luggage room', 'Airport group travel'],
+    features: ['Up to 7 passengers in chauffeur service', 'Flexible seating configuration', 'Best for groups and extra luggage'],
   },
 ];
 
@@ -76,10 +79,11 @@ export default function Fleet() {
                   </span>
                   <span>
                     <BriefcaseBusiness aria-hidden="true" />
-                    {vehicle.luggage} bags
+                    {vehicle.luggage}
                   </span>
                 </div>
 
+                <p className="fleet-spec">{vehicle.officialSpec}</p>
                 <p className="fleet-ideal">{vehicle.ideal}</p>
 
                 <ul className="fleet-features">

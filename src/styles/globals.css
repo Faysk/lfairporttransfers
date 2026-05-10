@@ -668,6 +668,13 @@ img {
   font-weight: 800;
 }
 
+.fleet-spec {
+  margin: 0;
+  color: var(--teal);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
 .fleet-features {
   display: grid;
   gap: 6px;
